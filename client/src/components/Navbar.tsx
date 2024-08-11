@@ -35,7 +35,7 @@ export function Navbar() {
             />
           </svg>
         </button>
-        <ul className="hidden lg:block lg:flex lg:gap-4">
+        <ul className="hidden lg:block lg:flex gap-4 text-slate-700">
           <li>
             <Link to={"/"}>Home</Link>
           </li>
