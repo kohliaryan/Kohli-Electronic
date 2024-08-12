@@ -40,9 +40,10 @@ categoryRoute.post("/create", async (c) => {
       201
     );
   } catch (e) {
+    console.log(e)
     return c.json({
       msg: "Something went wrong while creating category",
-    });
+    }, 400);
   } finally {
     await prisma.$disconnect();
   }
