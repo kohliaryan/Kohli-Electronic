@@ -51,9 +51,6 @@ export function Navbar() {
           <li>
             <Link to={"/contact"}>Contact Us</Link>
           </li>
-          <li>
-            <Link to={"/signup"}>Sign Up</Link>
-          </li>
         </ul>
       </div>
 
@@ -73,9 +70,6 @@ export function Navbar() {
           </li>
           <li>
             <Link to={"/contact"}>Contact Us</Link>
-          </li>
-          <li>
-            <Link to={"/signup"}>Sign Up</Link>
           </li>
         </ul>
       )}
