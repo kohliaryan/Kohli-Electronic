@@ -77,22 +77,22 @@ export function Navbar() {
       {isOpen && (
         <ul className="text-center p-2 text-slate-700 lg:hidden">
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to={"/products"}>Products</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/products"}>Products</Link>
           </li>
           <li>
-            <Link to={"/offers"}>Offers</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/offers"}>Offers</Link>
           </li>
           <li>
-            <Link to={"/services"}>Services</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/services"}>Services</Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact Us</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/contact"}>Contact Us</Link>
           </li>
           <li>
-            <Link to={"/login"}>Admin</Link>
+            <Link onClick={()=> setIsOpen(false)} to={"/login"}>Admin</Link>
           </li>
         </ul>
       )}
