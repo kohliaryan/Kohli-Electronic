@@ -3,7 +3,7 @@ import { loginSchema, newCategorySchema } from "../schema";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "jsonwebtoken";
-import { use } from "hono/jsx";
+import { jwtVerify, SignJWT } from "jose";
 
 export const adminRouter = new Hono<{
   Bindings: {
@@ -76,17 +76,21 @@ adminRouter.post("/login", async (c) => {
       password: body.password,
     },
   });
+
   if (!user) {
     return c.json(
       {
-        msg: "Invalid Username or password",
+        msg: "Invalid Username or Password",
       },
       400
     );
   }
-  const token = sign(user, c.env.JWT_SECRET)
-  localStorage.setItem(token, token)
+  const token = await new SignJWT({ id: user.id, username: user.username })
+    .setProtectedHeader({ alg: "HS256" })
+    .setExpirationTime("1h")
+    .sign(new TextEncoder().encode(c.env.JWT_SECRET));
   return c.json({
-    msg: "Log in succesful",
+    msg: "Login successful",
+    token: token,
   });
 });
