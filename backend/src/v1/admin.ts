@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import { loginSchema, newCategorySchema } from "../schema";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
-import { sign } from "jsonwebtoken";
 import { jwtVerify, SignJWT } from "jose";
 
 export const adminRouter = new Hono<{

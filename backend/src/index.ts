@@ -1,13 +1,16 @@
-import { Hono } from 'hono'
-import { adminRouter } from './v1/admin'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { adminRouter } from "./v1/admin";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/', (c) => {
-  return c.text('Welcome to Kohli Electronics')
-})
+// Add CORS middleware
+app.use("*", cors());
 
-app.route('/v1/admin', adminRouter)
+app.get("/", (c) => {
+  return c.text("Welcome to Kohli Electronics");
+});
 
+app.route("/v1/admin", adminRouter);
 
-export default app
+export default app;
