@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function AdminHome() {
   const [loading, setLoading] = useState(true);
@@ -11,15 +11,15 @@ export function AdminHome() {
     axios
       .get("http://localhost:8787/v1/admin/verify", {
         headers: {
-            auth: token
-        }
+          auth: token,
+        },
       })
       .then(async (response) => {
         if (response.data.valid) {
-            setLoading(false)
+          setLoading(false);
         } else {
+          setLoading(false);
         }
-        setLoading(false);
       })
       .catch(() => {
         navigate("/login");
@@ -53,5 +53,28 @@ export function AdminHome() {
     );
   }
 
-  return <div>Homepage</div>;
+  return (
+    <div>
+      <div className="flex justify-center mt-4 mx-2">
+        <Link
+          to={"/admin/categories"}
+          className="block w-screen p-6 bg-blue-800 border border-gray-300 rounded-lg shadow hover:bg-blue-900 "
+        >
+          <h5 className="mb-2 text-2xl text-center font-bold tracking-tight text-white ">
+            Categories Management
+          </h5>
+        </Link>
+      </div>
+      <div className="flex justify-center mt-4 mx-2">
+        <Link
+          to={"/admin/product"}
+          className="block w-screen p-6 bg-blue-800 border border-gray-300 rounded-lg shadow hover:bg-blue-900 "
+        >
+          <h5 className="mb-2 text-2xl text-center font-bold tracking-tight text-white ">
+            Product Management
+          </h5>
+        </Link>
+      </div>
+    </div>
+  );
 }

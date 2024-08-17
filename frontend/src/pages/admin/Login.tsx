@@ -26,7 +26,7 @@ export function Login() {
       >
         <svg
           aria-hidden="true"
-          className="w-8 h-8 text-gray-600 animate-spin fill-blue-600"
+          className="w-8 h-8 text-gray-600 animate-spin fill-blue-900"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -55,17 +55,15 @@ export function Login() {
           <span className="font-medium">Warning alert!</span> Invalid username
           or password. Please try again.
         </div>
-      ) : (
-        <></>
-      )}
-      <h1 className="text-3xl sm:text-4xl text-center font-extrabold my-7">
+      ) : null}
+      <h1 className="text-3xl sm:text-4xl text-center font-extrabold my-7 text-blue-900">
         Admin Log in
       </h1>
       <div className="flex flex-col gap-4">
         <input
           type="text"
           placeholder="Name"
-          className="border p-3 rounded-lg"
+          className="border border-gray-300 p-3 rounded-lg text-gray-700"
           onChange={(e) => {
             setName(e.target.value);
             setWarning(false);
@@ -74,12 +72,12 @@ export function Login() {
         <input
           type="password"
           placeholder="Password"
-          className="border p-3 rounded-lg"
+          className="border border-gray-300 p-3 rounded-lg text-gray-700"
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button
-          className="bg-slate-700 text-white p-2 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 font-semibold"
+          className="bg-blue-900 text-white p-2 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 font-semibold"
           disabled={!validForm || loading}
           aria-disabled={!validForm || loading}
           onClick={async () => {

@@ -9,12 +9,12 @@ export function Navbar() {
   }
 
   return (
-    <header className="bg-slate-200 shadow-md">
+    <header className="bg-blue-900 shadow-md">
       <div className="flex justify-between items-center max-w-6xl p-3 mx-auto">
         <Link to="/">
           <h1 className="font-bold text-lg sm:text-xl">
-            <span className="text-slate-500">Kohli</span>{" "}
-            <span className="text-slate-700">Electronic</span>
+            <span className="text-white">Kohli</span>{" "}
+            <span className="text-yellow-500">Electronics</span>
           </h1>
         </Link>
 
@@ -22,7 +22,7 @@ export function Navbar() {
           {isOpen ? (
             <svg
               fill="none"
-              className="w-5 h-5"
+              className="w-5 h-5 text-white"
               viewBox="0 0 15 15"
               height="em"
               width="1em"
@@ -36,7 +36,7 @@ export function Navbar() {
             </svg>
           ) : (
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -52,47 +52,47 @@ export function Navbar() {
             </svg>
           )}
         </button>
-        <ul className="hidden lg:block lg:flex gap-4 text-slate-700">
+        <ul className="hidden lg:block lg:flex gap-4 text-white">
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} className="hover:text-yellow-500">Home</Link>
           </li>
           <li>
-            <Link to={"/products"}>Products</Link>
+            <Link to={"/products"} className="hover:text-yellow-500">Products</Link>
           </li>
           <li>
-            <Link to={"/offers"}>Offers</Link>
+            <Link to={"/offers"} className="hover:text-yellow-500">Offers</Link>
           </li>
           <li>
-            <Link to={"/services"}>Services</Link>
+            <Link to={"/services"} className="hover:text-yellow-500">Services</Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact Us</Link>
+            <Link to={"/contact"} className="hover:text-yellow-500">Contact Us</Link>
           </li>
           <li>
-            <Link to={"/login"}>Admin</Link>
+            <Link to={"/login"} className="hover:text-yellow-500">Admin</Link>
           </li>
         </ul>
       </div>
 
       {isOpen && (
-        <ul className="text-center p-2 text-slate-700 lg:hidden">
+        <ul className="text-center p-2 text-white bg-blue-900 lg:hidden">
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/"}>Home</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/"} className="block p-2 hover:text-yellow-500">Home</Link>
           </li>
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/products"}>Products</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/products"} className="block p-2 hover:text-yellow-500">Products</Link>
           </li>
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/offers"}>Offers</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/offers"} className="block p-2 hover:text-yellow-500">Offers</Link>
           </li>
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/services"}>Services</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/services"} className="block p-2 hover:text-yellow-500">Services</Link>
           </li>
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/contact"}>Contact Us</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/contact"} className="block p-2 hover:text-yellow-500">Contact Us</Link>
           </li>
           <li>
-            <Link onClick={()=> setIsOpen(false)} to={"/login"}>Admin</Link>
+            <Link onClick={() => setIsOpen(false)} to={"/login"} className="block p-2 hover:text-yellow-500">Admin</Link>
           </li>
         </ul>
       )}
