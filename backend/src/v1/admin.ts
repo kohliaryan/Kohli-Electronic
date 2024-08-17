@@ -93,3 +93,22 @@ adminRouter.post("/login", async (c) => {
     token: token,
   });
 });
+
+adminRouter.get("/verify", async (c) => {
+  const token: string = c.req.header('auth') || ""
+
+  try {
+    await jwtVerify(token, new TextEncoder().encode(c.env.JWT_SECRET));
+
+    return c.json({
+      valid: true,
+    });
+  } catch {
+    return c.json(
+      {
+        valid: false,
+      },
+      400
+    );
+  }
+});
