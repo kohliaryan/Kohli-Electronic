@@ -93,7 +93,7 @@ export function Login() {
                 }
               );
               const data = response.data;
-              localStorage.setItem("token", data.token);
+              localStorage.setItem("token", `Bearer ${data.token}`);
               navigate("/admin");
             } catch {
               setWarning(true);

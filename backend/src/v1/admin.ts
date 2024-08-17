@@ -95,7 +95,7 @@ adminRouter.post("/login", async (c) => {
 });
 
 adminRouter.get("/verify", async (c) => {
-  const token: string = c.req.header('auth') || ""
+  const token: string = c.req.header("auth")?.split(" ")[1] || "";
 
   try {
     await jwtVerify(token, new TextEncoder().encode(c.env.JWT_SECRET));
