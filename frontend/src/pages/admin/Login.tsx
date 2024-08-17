@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Login() {
@@ -7,11 +7,23 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [warning, setWarning] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [validForm, setValidForm] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (name.trim() !== "" && password.length >= 8) {
+      setValidForm(true);
+    } else {
+      setValidForm(false);
+    }
+  }, [name, password]);
 
   if (loading) {
     return (
-      <div role="status" className="flex flex-col justify-center items-center h-screen">
+      <div
+        role="status"
+        className="flex flex-col justify-center items-center h-screen"
+      >
         <svg
           aria-hidden="true"
           className="w-8 h-8 text-gray-600 animate-spin fill-blue-600"
@@ -54,7 +66,10 @@ export function Login() {
           type="text"
           placeholder="Name"
           className="border p-3 rounded-lg"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setWarning(false);
+          }}
         />
         <input
           type="password"
@@ -65,6 +80,8 @@ export function Login() {
 
         <button
           className="bg-slate-700 text-white p-2 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 font-semibold"
+          disabled={!validForm || loading}
+          aria-disabled={!validForm || loading}
           onClick={async () => {
             setLoading(true);
             try {
@@ -76,11 +93,11 @@ export function Login() {
                 }
               );
               const data = response.data;
-              console.log(data);
               localStorage.setItem("token", data.token);
               navigate("/admin");
             } catch {
               setWarning(true);
+            } finally {
               setLoading(false);
             }
           }}
